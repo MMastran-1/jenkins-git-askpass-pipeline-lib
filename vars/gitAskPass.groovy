@@ -8,7 +8,7 @@ Username*) echo \$USERNAME ;;
 Password*) echo \$PASSWORD ;;
 esac' > ${tmpAskPassScript}
     """
-    withCredentials([usernamePassword(credentialsId: credentialsId, passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {            
+    withCredentials([usernamePassword(credentialsId: credentialsId, passwordVariable: 'GITHUB_ACCESS_TOKEN', usernameVariable: 'GITHUB_APP')]) {            
         sh """
         chmod +x ${tmpAskPassScript}
         GIT_ASKPASS=${tmpAskPassScript} ${gitCommand}
